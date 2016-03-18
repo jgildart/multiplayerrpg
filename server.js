@@ -1,10 +1,18 @@
-var express = require('express');
-var app = express();
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 app.get('/', function (req, res){
-  res.send('Server starting');
+  res.sendFile(__dirname + '/index.html');
 });
 
-app.listen(3000, function () {
+io.on('connection', function(socket){
+  console.log('User connected');
+  socket.on('Chat message', function(msg){
+    console.log('message: ' + msg);
+  });
+});
+
+http.listen(3000, function () {
   console.log('Server started on port 3000.');
 });
