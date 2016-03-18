@@ -1,0 +1,19 @@
+{
+  "name": "multiplayerrpg",
+  "version": "0.0.1",
+  "description": "No description",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jgildart/multiplayerrpg.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jgildart/multiplayerrpg/issues"
+  },
+  "homepage": "https://github.com/jgildart/multiplayerrpg#readme"
+}
