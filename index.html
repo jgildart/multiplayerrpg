@@ -2,18 +2,35 @@
 <head>
   <title>Game project</title>
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+  <style>
+
+  </style>
 </head>
 <body>
-  <h1>Hey</h1>
-  <p>i made some changes</p>
-
-
+  <h1>Game Chat</h1>
+  <div class="messages">
+  </div>
+  <input type="text" class="chat" />
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    var socket = io();
-    window.chat = function(msg) {
-      socket.emit('Chat message', msg);
-    }
+    $(function() {
+      var socket = io();
+
+      $('.chat').keypress(function (e) {
+        var $chat = $('.chat');
+        var message = $chat.val();
+
+        if (e.keyCode === 13 && $.trim(message) != '') {
+          socket.emit('Chat message', message);
+          $chat.val('');
+        }
+      });
+
+      socket.on('Chat message', function (data) {
+        var date = new Date(data.time);
+        $('.messages').append('<div class="message">' + date + ': ' + data.message + '</div>');
+      });
+    });
   </script>
 </body>
 </html>
