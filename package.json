@@ -10,10 +10,12 @@
     "type": "git",
     "url": "git+https://github.com/jgildart/multiplayerrpg.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Jordan Lin, Josh Gildart",
   "bugs": {
     "url": "https://github.com/jgildart/multiplayerrpg/issues"
   },
-  "homepage": "https://github.com/jgildart/multiplayerrpg#readme"
+  "homepage": "https://github.com/jgildart/multiplayerrpg#readme",
+  "dependencies": {
+    "express": "^4.13.4"
+  }
 }
