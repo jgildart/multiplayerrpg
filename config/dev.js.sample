@@ -1,0 +1,13 @@
+module.exports = {
+  redis: {
+    host: 'localhost',
+    port: 6379
+  },
+  mysql: {
+    database: 'game',
+    host: 'localhost',
+    user: 'root',
+    password: 'your_local_password',
+    port: 3306
+  }
+};
