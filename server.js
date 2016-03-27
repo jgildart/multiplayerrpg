@@ -53,8 +53,32 @@ app.post('/signup', function(req, res){
   } else {
     return res.sendStatus(400);
   }
-})
+});
 
+app.get('/login', function (req, res) {
+  res.sendFile(__dirname + '/login.html');
+});
+
+app.post('/login', function (req, res) {
+  var User = require('./models/user');
+  var bcrypt = require('bcrypt');
+
+  if (req.body.username && req.body.password) {
+    User.findOne({
+      where: {
+        username: req.body.username
+      }
+    }).then(function (user) {
+      if (bcrypt.compareSync(req.body.password, user.password)) {
+        // log them in
+      } else {
+        // redirect with an invalid login at /login
+      }
+    });
+  } else {
+    return res.sendStatus(400);
+  }
+});
 
 io.on('connection', function(socket){
   console.log('User connected');
