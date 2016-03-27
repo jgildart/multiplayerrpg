@@ -31,6 +31,30 @@ app.use(session({
 app.get('/', function (req, res){
   res.sendFile(__dirname + '/index.html');
 });
+app.post('/signup', function(req, res){
+  var isEmail = require('validator/lib/isEmail');
+  var User = require('./models/user');
+  var bcrypt = require('bcrypt');
+
+  if(req.body.username && req.body.email && req.body.password){
+    if(!isEmail(req.body.email)){
+      return res.sendStatus(400);
+    }
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(req.body.password, salt);
+    User.create({
+      username: req.body.username,
+      password: hash,
+      email:    req.body.email
+    })
+    .then(function(result){
+      res.redirect('/');
+    });
+  } else {
+    return res.sendStatus(400);
+  }
+})
+
 
 io.on('connection', function(socket){
   console.log('User connected');
