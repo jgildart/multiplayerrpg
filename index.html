@@ -65,7 +65,7 @@
     Player.prototype = {
       update: function () {
         var KEYS = this.keyboard.KEYS;
-        if (this.keyboard.isDown(KEYS.DOWN)) {
+        if (this.keyboard.isDown(KEYS.DOWN) || this.keyboard.isDown(KEYS.S)) {
           if (this.center.y + this.size.y / 2 < this.gameSize.y) {
             this.center.y += this.speed;
           } else {
@@ -73,7 +73,7 @@
           }
         }
 
-        if (this.keyboard.isDown(KEYS.UP)) {
+        if (this.keyboard.isDown(KEYS.UP) || this.keyboard.isDown(KEYS.W)) {
           if (this.center.y - this.size.y / 2 > 0) {
             this.center.y -= this.speed;
           } else {
@@ -81,7 +81,7 @@
           }
         }
 
-        if (this.keyboard.isDown(KEYS.LEFT)) {
+        if (this.keyboard.isDown(KEYS.LEFT) || this.keyboard.isDown(KEYS.A)) {
           if (this.center.x - this.size.x / 2 > 0) {
             this.center.x -= this.speed;
           }  else {
@@ -89,7 +89,7 @@
           }
         }
 
-        if (this.keyboard.isDown(KEYS.RIGHT)) {
+        if (this.keyboard.isDown(KEYS.RIGHT) || this.keyboard.isDown(KEYS.D)) {
           if (this.center.x + this.size.x / 2 < this.gameSize.x) {
             this.center.x += this.speed;
           } else {
